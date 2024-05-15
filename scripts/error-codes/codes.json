@@ -183,5 +183,6 @@
   "181": "Expected text node to be first child of span",
   "182": "Unexpected null rootDOMNode",
   "183": "Unexpected null parentDOMNode",
-  "184": "Element point must be an element node"
+  "184": "Element point must be an element node",
+  "185": "%s doesn't extend the %s"
 }
