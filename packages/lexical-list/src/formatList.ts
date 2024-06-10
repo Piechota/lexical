@@ -184,7 +184,11 @@ function $createListOrMerge(node: ElementNode, listType: ListType): ListNode {
   } else {
     const list = $createListNode(listType);
     list.append(listItem);
-    node.replace(list);
+    if ($isRootOrShadowRoot(node)) {
+      node.append(list);
+    } else {
+      node.replace(list);
+    }
     return list;
   }
 }
