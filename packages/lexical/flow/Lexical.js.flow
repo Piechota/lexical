@@ -835,6 +835,7 @@ declare export function $getAdjacentNode(
   focus: Point,
   isBackward: boolean,
 ): null | LexicalNode;
+declare export function resetRandomKey(): void;
 declare export function generateRandomKey(): string;
 declare export function $isInlineElementOrDecoratorNode<T = mixed>(
   node: LexicalNode,
