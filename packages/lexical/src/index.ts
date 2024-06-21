@@ -117,9 +117,12 @@ export {
   IS_CODE,
   IS_HIGHLIGHT,
   IS_ITALIC,
+  IS_NORMAL,
+  IS_SEGMENTED,
   IS_STRIKETHROUGH,
   IS_SUBSCRIPT,
   IS_SUPERSCRIPT,
+  IS_TOKEN,
   IS_UNDERLINE,
   TEXT_TYPE_TO_FORMAT,
 } from './LexicalConstants';
@@ -147,7 +150,11 @@ export {
   $isNodeSelection,
   $isRangeSelection,
 } from './LexicalSelection';
-export {$parseSerializedNode, isCurrentlyReadOnlyMode} from './LexicalUpdates';
+export {
+  $parseSerializedNode,
+  getActiveEditor,
+  isCurrentlyReadOnlyMode,
+} from './LexicalUpdates';
 export {
   $addUpdateTag,
   $applyNodeReplacement,

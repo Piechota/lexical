@@ -96,7 +96,6 @@ import {
   getDOMTextNode,
   getEditorsToPropagate,
   getNearestEditorFromDOMNode,
-  getWindow,
   isBackspace,
   isBold,
   isCopy,
@@ -317,25 +316,14 @@ function onSelectionChange(
           selection.dirty = true;
         }
 
-        // If we have marked a collapsed selection format, and we're
-        // within the given time range – then attempt to use that format
-        // instead of getting the format from the anchor node.
-        const windowEvent = getWindow(editor).event;
-        const currentTimeStamp = windowEvent
-          ? windowEvent.timeStamp
-          : performance.now();
-        const [lastFormat, lastStyle, lastOffset, lastKey, timeStamp] =
+        const [lastFormat, lastStyle, lastOffset, lastKey] =
           collapsedSelectionFormat;
 
         const root = $getRoot();
         const isRootTextContentEmpty =
           editor.isComposing() === false && root.getTextContent() === '';
 
-        if (
-          currentTimeStamp < timeStamp + 200 &&
-          anchor.offset === lastOffset &&
-          anchor.key === lastKey
-        ) {
+        if (anchor.offset === lastOffset && anchor.key === lastKey) {
           selection.format = lastFormat;
           selection.style = lastStyle;
         } else {
@@ -354,9 +342,9 @@ function onSelectionChange(
             ) {
               selection.format = lastNode.getTextFormat();
             } else {
+              selection.style = '';
               selection.format = 0;
             }
-            selection.style = '';
           }
         }
       } else {
